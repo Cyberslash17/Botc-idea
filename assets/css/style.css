@@ -1,0 +1,105 @@
+:root {
+  --bg: #f4efe4;
+  --surface: #fffaf0;
+  --text: #2a2320;
+  --muted: #6d6158;
+  --border: #d9cdb8;
+  --townsfolk: #1f5fa8;
+  --outsider: #2f8fa3;
+  --minion: #b3261e;
+  --demon: #7a0f0f;
+  --traveller: #6b3fa0;
+  --fabled: #a67c00;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15110f;
+    --surface: #211b18;
+    --text: #ece3d4;
+    --muted: #a8998a;
+    --border: #3a302a;
+    --townsfolk: #6fa8ea;
+    --outsider: #6cc6d8;
+    --minion: #ec6a60;
+    --demon: #e04a4a;
+    --traveller: #b08ae0;
+    --fabled: #e2b93b;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 1.125rem/1.55 "Crimson Pro", Georgia, serif;
+}
+main, .site-header, .site-footer { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+a { color: inherit; }
+h1, h2, h3, .site-title { font-family: "Cinzel", Georgia, serif; font-weight: 700; }
+
+.site-header { padding-top: 2.5rem; padding-bottom: 1.5rem; text-align: center; }
+.site-title { font-size: clamp(1.6rem, 5vw, 2.6rem); text-decoration: none; letter-spacing: .03em; }
+.site-tagline { margin: .25rem 0 0; color: var(--muted); font-style: italic; }
+.site-footer { padding-top: 3rem; padding-bottom: 2rem; color: var(--muted); font-size: .9rem; text-align: center; }
+
+.controls { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .5rem; }
+.controls input, .controls select {
+  font: inherit; font-size: 1rem; padding: .5rem .75rem;
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px;
+}
+.controls input { flex: 1 1 240px; min-width: 0; }
+.count { color: var(--muted); font-size: .95rem; margin: 0 0 1rem; }
+
+.team-section h2 { border-bottom: 2px solid currentColor; padding-bottom: .25rem; margin-top: 2rem; }
+.role-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.role-card {
+  display: flex; flex-direction: column; gap: .4rem;
+  background: var(--surface); border: 1px solid var(--border); border-left: 5px solid currentColor;
+  border-radius: 10px; padding: 1rem 1.1rem; text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.role-card:hover, .role-card:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 18px rgb(0 0 0 / .12); }
+.role-card h3 { margin: 0; font-size: 1.15rem; }
+.role-card p { margin: 0; color: var(--text); flex: 1; }
+.role-card[hidden], .team-section[hidden] { display: none; }
+
+.team-townsfolk { color: var(--townsfolk); }
+.team-outsider  { color: var(--outsider); }
+.team-minion    { color: var(--minion); }
+.team-demon     { color: var(--demon); }
+.team-traveller { color: var(--traveller); }
+.team-fabled    { color: var(--fabled); }
+
+.status {
+  align-self: flex-start; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em;
+  padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted);
+}
+.status-playtested { border-color: #3c8a4a; color: #3c8a4a; }
+.status-drafting { border-color: #b7791f; color: #b7791f; }
+
+.role-page { max-width: 720px; margin: 0 auto; }
+.back { color: var(--muted); text-decoration: none; font-size: 1rem; }
+.role-token {
+  margin: 1rem 0 1.5rem; padding: 2rem 1.5rem; text-align: center;
+  background: var(--surface); border: 2px solid currentColor; border-radius: 16px;
+}
+.role-team { font-family: "Cinzel", serif; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+.role-token h1 { margin: .25rem 0 .75rem; font-size: clamp(1.8rem, 6vw, 2.6rem); }
+.role-ability { margin: 0; color: var(--text); font-size: 1.25rem; font-style: italic; }
+.role-meta {
+  display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1rem; margin: 0 0 1.5rem;
+  color: var(--text);
+}
+.role-meta dt { font-weight: 600; color: var(--muted); }
+.role-meta dd { margin: 0; }
+.tag { display: inline-block; margin: 0 .3rem .3rem 0; padding: 0 .5rem; border-radius: 6px; background: var(--border); font-size: .9rem; }
+.role-notes { color: var(--text); }
+.role-notes h2 { font-size: 1.3rem; }
+.empty { color: var(--muted); font-style: italic; text-align: center; margin-top: 2rem; }
+
+@media (max-width: 520px) {
+  .role-meta { grid-template-columns: 1fr; }
+  .role-meta dd { margin-bottom: .5rem; }
+}

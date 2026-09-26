@@ -1,0 +1,37 @@
+title: Clocktower Role Ideas
+description: A grimoire of homebrew character ideas for Blood on the Clocktower.
+
+collections:
+  roles:
+    output: true
+    permalink: /roles/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: roles
+    values:
+      layout: role
+
+# Order teams appear in on the home page.
+teams:
+  - key: townsfolk
+    label: Townsfolk
+  - key: outsider
+    label: Outsiders
+  - key: minion
+    label: Minions
+  - key: demon
+    label: Demons
+  - key: traveller
+    label: Travellers
+  - key: fabled
+    label: Fabled
+
+exclude:
+  - README.md
+  - role-template.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor

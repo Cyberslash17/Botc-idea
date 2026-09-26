@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% assign team = site.teams | where: "key", page.team | first %}
+<article class="role-page team-{{ page.team }}">
+  <a class="back" href="{{ '/' | relative_url }}">&larr; All roles</a>
+  <div class="role-token">
+    <span class="role-team">{{ team.label | default: page.team }}</span>
+    <h1>{{ page.name }}</h1>
+    <p class="role-ability">{{ page.ability }}</p>
+  </div>
+
+  <dl class="role-meta">
+    {% if page.status %}<dt>Status</dt><dd><span class="status status-{{ page.status | slugify }}">{{ page.status }}</span></dd>{% endif %}
+    {% if page.author %}<dt>Author</dt><dd>{{ page.author }}</dd>{% endif %}
+    {% if page.first_night %}<dt>First night</dt><dd>{{ page.first_night }}</dd>{% endif %}
+    {% if page.other_nights %}<dt>Other nights</dt><dd>{{ page.other_nights }}</dd>{% endif %}
+    {% if page.reminders %}<dt>Reminder tokens</dt><dd>{{ page.reminders | join: ", " }}</dd>{% endif %}
+    {% if page.tags %}<dt>Tags</dt><dd>{% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</dd>{% endif %}
+  </dl>
+
+  <div class="role-notes">
+    {{ content }}
+  </div>
+</article>
