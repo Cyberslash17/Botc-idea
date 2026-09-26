@@ -24,6 +24,6 @@ out in the open, nominating them risks your own life.
   Lawyer really a Townsfolk?
 - Does the swap still happen if the nominator is the Demon? If so, it can
   end the game on the spot.
-- Does the ability trigger if the Lawyer is drunk or poisoned? If not, the
-  Storyteller should still mark it used, since the Lawyer was "executed".
+- If the Lawyer is drunk or poisoned when executed, they simply die. Does
+  that use up the ability, or can a later execution still trigger it?
 - How does it interact with the Virgin, Butler and Witch?
