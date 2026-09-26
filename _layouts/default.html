@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.name and page.collection == "roles" %}{{ page.name }} · {% endif %}{{ site.title }}</title>
+  <title>{% if page.collection == "roles" %}{{ page.name }} · {% elsif page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.ability | default: site.description | escape }}">
+  <meta name="color-scheme" content="dark">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
+  {% include glyphs.svg %}
   <header class="site-header">
     <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <div class="flourish" aria-hidden="true"><span></span>&#10022;<span></span></div>
     <p class="site-tagline">{{ site.description }}</p>
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>The Script</a>
+      <a href="{{ '/forge/' | relative_url }}"{% if page.url == "/forge/" %} aria-current="page"{% endif %}>Glyph Forge</a>
+    </nav>
   </header>
   <main>
     {{ content }}

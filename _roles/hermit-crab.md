@@ -7,6 +7,10 @@ author:
 first_night: "Show the Hermit Crab a Townsfolk token that is in play."
 other_nights: "If the copied player died today or tonight, wake the Hermit Crab and show them their true token."
 reminders: [Shell]
+glyph:
+  symbol: mask
+  accent: moon
+  scale: 0.85
 tags: [misinformation, self-doubt]
 ---
 

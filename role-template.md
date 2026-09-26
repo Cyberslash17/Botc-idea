@@ -10,6 +10,9 @@ first_night: ""        # Storyteller instructions for night 1
 other_nights: ""       # Storyteller instructions for other nights
 reminders: []          # Reminder token names
 tags: []
+glyph:                 # Icon; design one at /forge/ and paste its snippet here
+  symbol: eye
+# image: /assets/icons/my-role.png   # Or use your own picture instead
 ---
 
 ## Design notes

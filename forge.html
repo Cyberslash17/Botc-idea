@@ -1,0 +1,60 @@
+---
+layout: default
+title: Glyph Forge
+permalink: /forge/
+---
+<div class="sheet">
+  <div class="forge">
+    <div class="forge-controls">
+      <h2>Character</h2>
+      <label for="f-name">Name</label>
+      <input id="f-name" type="text" value="New Character" maxlength="40">
+      <label for="f-team">Team</label>
+      <select id="f-team">
+        {% for team in site.teams %}<option value="{{ team.key }}">{{ team.label }}</option>{% endfor %}
+      </select>
+
+      <h2>Symbol</h2>
+      <div class="symbol-grid" id="f-symbols" role="group" aria-label="Main symbol"></div>
+
+      <h2>Accent</h2>
+      <div class="symbol-grid" id="f-accents" role="group" aria-label="Accent symbol"></div>
+      <label for="f-accent-pos">Accent position</label>
+      <select id="f-accent-pos">
+        <option value="br">Bottom right</option>
+        <option value="bl">Bottom left</option>
+        <option value="tr">Top right</option>
+        <option value="tl">Top left</option>
+        <option value="center">Centre</option>
+      </select>
+
+      <h2>Shape</h2>
+      <label for="f-rotate">Rotation <span id="f-rotate-val">0°</span></label>
+      <input id="f-rotate" type="range" min="-180" max="180" step="5" value="0">
+      <label for="f-scale">Size <span id="f-scale-val">100%</span></label>
+      <input id="f-scale" type="range" min="0.5" max="1.2" step="0.05" value="1">
+      <label class="inline"><input id="f-flip" type="checkbox"> Mirror horizontally</label>
+    </div>
+
+    <div class="forge-preview">
+      <div id="f-token"></div>
+      <div class="forge-icons" aria-label="Icon previews">
+        <svg id="f-icon" viewBox="0 0 100 100"></svg>
+        <svg id="f-icon-dark" class="on-dark" viewBox="0 0 100 100"></svg>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="f-random" type="button">Randomise</button>
+        <button class="btn secondary" id="f-dl-icon" type="button">Icon PNG</button>
+        <button class="btn secondary" id="f-dl-svg" type="button">Icon SVG</button>
+        <button class="btn secondary" id="f-dl-token" type="button">Token PNG</button>
+      </div>
+      <div style="width:100%">
+        <h2>Paste into your role file</h2>
+        <textarea class="snippet" id="f-snippet" readonly aria-label="Front matter snippet"></textarea>
+        <div class="btn-row"><button class="btn secondary" id="f-copy" type="button">Copy snippet</button></div>
+        <p class="hint">Add these lines to the front matter (between the <code>---</code> lines) of a file in <code>_roles/</code> and the site draws the glyph for you. Or download the PNG, upload it to <code>assets/icons/</code>, and set <code>image: /assets/icons/your-file.png</code>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ '/assets/js/forge.js' | relative_url }}"></script>

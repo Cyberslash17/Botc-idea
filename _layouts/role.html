@@ -2,24 +2,39 @@
 layout: default
 ---
 {% assign team = site.teams | where: "key", page.team | first %}
-<article class="role-page team-{{ page.team }}">
-  <a class="back" href="{{ '/' | relative_url }}">&larr; All roles</a>
-  <div class="role-token">
-    <span class="role-team">{{ team.label | default: page.team }}</span>
-    <h1>{{ page.name }}</h1>
-    <p class="role-ability">{{ page.ability }}</p>
+<article class="sheet role-page team-{{ page.team }}">
+  <a class="back" href="{{ '/' | relative_url }}">&larr; Back to the script</a>
+
+  <div class="role-hero">
+    {% include token.html role=page %}
+    <div>
+      <p class="role-team">{{ team.label | default: page.team }}</p>
+      <h1 class="role-name">{{ page.name }}</h1>
+      <p class="role-ability">&ldquo;{{ page.ability }}&rdquo;</p>
+      {% if page.status %}<span class="status status-{{ page.status | slugify }}">{{ page.status }}</span>{% endif %}
+      {% if page.author %}<p class="role-author">by {{ page.author }}</p>{% endif %}
+    </div>
   </div>
 
+  {% if page.first_night or page.other_nights %}
+  <section class="night-order">
+    <h2>Night Order</h2>
+    {% if page.first_night %}<div><h3>First Night</h3><p>{{ page.first_night }}</p></div>{% endif %}
+    {% if page.other_nights %}<div><h3>Other Nights</h3><p>{{ page.other_nights }}</p></div>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if page.reminders.size > 0 or page.tags.size > 0 %}
   <dl class="role-meta">
-    {% if page.status %}<dt>Status</dt><dd><span class="status status-{{ page.status | slugify }}">{{ page.status }}</span></dd>{% endif %}
-    {% if page.author %}<dt>Author</dt><dd>{{ page.author }}</dd>{% endif %}
-    {% if page.first_night %}<dt>First night</dt><dd>{{ page.first_night }}</dd>{% endif %}
-    {% if page.other_nights %}<dt>Other nights</dt><dd>{{ page.other_nights }}</dd>{% endif %}
-    {% if page.reminders %}<dt>Reminder tokens</dt><dd>{{ page.reminders | join: ", " }}</dd>{% endif %}
-    {% if page.tags %}<dt>Tags</dt><dd>{% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</dd>{% endif %}
+    {% if page.reminders.size > 0 %}<dt>Reminders</dt><dd>{% for rem in page.reminders %}<span class="reminder">{{ rem }}</span>{% endfor %}</dd>{% endif %}
+    {% if page.tags.size > 0 %}<dt>Tags</dt><dd>{% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</dd>{% endif %}
   </dl>
+  {% endif %}
 
   <div class="role-notes">
     {{ content }}
   </div>
+
+  {% capture forge_q %}name={{ page.name | url_encode }}&team={{ page.team }}{% if page.glyph.symbol %}&symbol={{ page.glyph.symbol }}{% endif %}{% if page.glyph.accent %}&accent={{ page.glyph.accent }}{% endif %}{% if page.glyph.accent_pos %}&accent_pos={{ page.glyph.accent_pos }}{% endif %}{% if page.glyph.rotate %}&rotate={{ page.glyph.rotate }}{% endif %}{% if page.glyph.scale %}&scale={{ page.glyph.scale }}{% endif %}{% if page.glyph.flip %}&flip=1{% endif %}{% endcapture %}
+  <p class="forge-link"><a href="{{ '/forge/' | relative_url }}?{{ forge_q | strip }}">Edit this glyph in the Glyph Forge &rarr;</a></p>
 </article>

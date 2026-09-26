@@ -1,0 +1,36 @@
+{%- comment -%}
+  Renders a role's glyph. Usage: {% include glyph.html role=page class="..." %}
+  Keep this in sync with glyphMarkup() in assets/js/forge.js.
+{%- endcomment -%}
+{%- assign r = include.role -%}
+{%- case r.team -%}
+  {%- when "minion", "demon" -%}{%- assign ink = "evil" -%}
+  {%- when "traveller" -%}{%- assign ink = "traveller" -%}
+  {%- when "fabled" -%}{%- assign ink = "fabled" -%}
+  {%- else -%}{%- assign ink = "good" -%}
+{%- endcase -%}
+{%- case r.team -%}
+  {%- when "outsider" -%}{%- assign sym = "moon" -%}
+  {%- when "minion" -%}{%- assign sym = "dagger" -%}
+  {%- when "demon" -%}{%- assign sym = "horns" -%}
+  {%- when "traveller" -%}{%- assign sym = "hourglass" -%}
+  {%- when "fabled" -%}{%- assign sym = "star" -%}
+  {%- else -%}{%- assign sym = "eye" -%}
+{%- endcase -%}
+{%- assign g = r.glyph -%}
+{%- if g.symbol -%}{%- assign sym = g.symbol -%}{%- elsif g and g.first == nil -%}{%- assign sym = g -%}{%- endif -%}
+{%- assign rot = g.rotate | default: 0 -%}
+{%- assign sc = g.scale | default: 1 -%}
+{%- if g.flip -%}{%- assign sx = sc | times: -1 -%}{%- else -%}{%- assign sx = sc -%}{%- endif -%}
+{%- case g.accent_pos -%}
+  {%- when "tl" -%}{%- assign ap = "2 2" -%}
+  {%- when "tr" -%}{%- assign ap = "56 2" -%}
+  {%- when "bl" -%}{%- assign ap = "2 56" -%}
+  {%- when "center" -%}{%- assign ap = "29 29" -%}
+  {%- else -%}{%- assign ap = "56 56" -%}
+{%- endcase -%}
+{%- if r.image -%}
+<img class="glyph {{ include.class }}" src="{{ r.image | relative_url }}" alt="">
+{%- else -%}
+<svg class="glyph {{ include.class }}" viewBox="0 0 100 100" aria-hidden="true"><g fill="url(#ink-{{ ink }})" stroke="#1b0f0a" stroke-width="2.5" stroke-linejoin="round" filter="url(#glyph-shadow)"><use href="#g-{{ sym }}" width="100" height="100" transform="translate(50 50) rotate({{ rot }}) scale({{ sx }} {{ sc }}) translate(-50 -50)"/>{% if g.accent %}<use href="#g-{{ g.accent }}" width="42" height="42" transform="translate({{ ap }})"/>{% endif %}</g></svg>
+{%- endif -%}

@@ -7,6 +7,11 @@ author:
 first_night: 
 other_nights: "Widowmaker chooses a player. If adjacent to their previous kill, wake a Minion, show them the Widowmaker and let them choose a player to kill."
 reminders: [Dead, Last kill]
+glyph:
+  symbol: dagger
+  accent: drop
+  rotate: -30
+  scale: 0.85
 tags: [extra-kill, positional]
 ---
 

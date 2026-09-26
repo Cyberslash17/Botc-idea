@@ -1,0 +1,10 @@
+{%- comment -%} Parchment character token. Usage: {% include token.html role=page %} {%- endcomment -%}
+<svg class="token" viewBox="0 0 200 200" role="img" aria-label="{{ include.role.name | escape }} token">
+  <circle cx="100" cy="100" r="96" fill="url(#parchment)"/>
+  <circle cx="100" cy="100" r="96" fill="#fff" filter="url(#paper-grain)" opacity=".55"/>
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#2b1c10" stroke-width="3"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#8a6a3c" stroke-width="1" opacity=".6"/>
+  <svg x="47" y="26" width="106" height="106" viewBox="0 0 100 100">{% include glyph.html role=include.role %}</svg>
+  <path id="arc-{{ include.role.slug | default: 'token' }}" d="M 24 100 A 76 76 0 0 0 176 100" fill="none"/>
+  <text class="token-name"><textPath href="#arc-{{ include.role.slug | default: 'token' }}" startOffset="50%" text-anchor="middle">{{ include.role.name }}</textPath></text>
+</svg>

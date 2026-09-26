@@ -7,6 +7,8 @@ author:
 first_night: 
 other_nights: "Lamplighter chooses a player. If that player dies tonight, show them the killing character's token."
 reminders: [Lit]
+glyph:
+  symbol: lantern
 tags: [information, death]
 ---
 
