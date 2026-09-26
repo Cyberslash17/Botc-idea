@@ -22,8 +22,8 @@ The chosen player *dies* but is not *executed*. So:
 - Nobody was executed today. The Undertaker learns nothing tonight, and a
   Mastermind or Vortox "no execution" check sees no execution.
 - A Saint chosen by the Lawyer dies without losing the game for good.
-- A Tea Lady or Sailor chosen by the Lawyer doesn't die, but the swap
-  still saves the Lawyer.
+- A player who can't die (a sober Sailor, or a Tea Lady's good neighbour)
+  survives, but the Lawyer is still saved.
 
 ## Design notes
 
